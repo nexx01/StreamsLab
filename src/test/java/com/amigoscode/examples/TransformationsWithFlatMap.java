@@ -26,11 +26,19 @@ public class TransformationsWithFlatMap {
     public void withoutFlatMap() throws Exception {
         // [Mariam, Alex, Ismail, John, Alesha, Andre, Susy, Ali]
         List<String> names = new ArrayList<>();
+
+        arrayListOfNames.forEach(names::addAll);
+        System.out.println(names);
     }
 
     @Test
     public void withFlatMap() throws Exception {
         // [Mariam, Alex, Ismail, John, Alesha, Andre, Susy, Ali]
+        List<String> names = arrayListOfNames.stream()
+                .flatMap(List::stream)
+                .collect(Collectors.toList());
+
+        System.out.println(names);
     }
 
     @Test
@@ -39,6 +47,11 @@ public class TransformationsWithFlatMap {
                 Optional.of("Amigos"),
                 Optional.of("Code")
         );
+
+        List<String> l = optionals.stream()
+                .flatMap(Optional::stream)
+                .collect(Collectors.toList());
+        System.out.println(l);
     }
 }
 

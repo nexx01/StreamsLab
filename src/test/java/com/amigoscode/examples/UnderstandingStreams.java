@@ -19,13 +19,13 @@ public class UnderstandingStreams {
                 .collect(
                         ArrayList::new,
                         ArrayList::add,
-                        ArrayList::addAll
+                        (list1, list2) -> list1.addAll(list2)
                 );
         emails.forEach(System.out::println);
     }
 
     @Test
-    public void lazy() throws Exception {
+    public void lazy()  throws Exception {
         System.out.println(
                 MockData.getCars()
                         .stream()

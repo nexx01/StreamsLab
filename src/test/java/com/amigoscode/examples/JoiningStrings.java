@@ -11,6 +11,18 @@ public class JoiningStrings {
     public void joiningStrings() throws Exception {
         List<String> names = List.of("anna", "john", "marcos", "helena", "yasmin");
         // "Anna, John, Marcos, Helena, Yasmin"
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (String name : names) {
+            stringBuilder.append(name.substring(0, 1).toUpperCase())
+                    .append(name.substring(1))
+                    .append(", ");
+        }
+
+        System.out.println(stringBuilder.toString()
+        );
+
+        System.out.println(stringBuilder.substring(0,stringBuilder.length()-2));
     }
 
     @Test
@@ -18,6 +30,13 @@ public class JoiningStrings {
         List<String> names = List.of("anna", "john", "marcos", "helena", "yasmin");
         // "Anna, John, Marcos, Helena, Yasmin"
 
+        String join = names.stream()
+                .map(name -> name.substring(0, 1).toUpperCase() + name.substring(1))
+                .collect(Collectors.joining(","));
+
+        System.out.println(join);
     }
+
+
 
 }
