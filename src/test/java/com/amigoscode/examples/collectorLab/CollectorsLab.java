@@ -2,7 +2,9 @@ package com.amigoscode.examples.collectorLab;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -22,5 +24,19 @@ public class CollectorsLab {
         System.out.println(result);
 
         assertEquals(4, result.size());
+    }
+
+    @Test
+    void test2() {
+        String text = "Hello world";
+
+        GroupByEqualsCustomCollector<Object> customCollector = new GroupByEqualsCustomCollector<>();
+
+        Map<Object, Integer> result =
+                Arrays.stream(text.split("")).collect(customCollector);
+
+        System.out.println(result);
+
+
     }
 }
